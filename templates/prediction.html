@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rain Prediction Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background:#f0f8ff">
+    <div class="container mt-4">
+        {% if is_today %}
+            <h2 class="text-center mb-4">Today's Rain Prediction - Ajmer</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>{{ prediction.date }}</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Max Temperature:</strong> {{ prediction.max_temp }}°C</p>
+                                    <p><strong>Min Temperature:</strong> {{ prediction.min_temp }}°C</p>
+                                    <p><strong>Humidity:</strong> {{ prediction.humidity }}%</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Rain Probability:</strong> {{ prediction.rain_probability }}%</p>
+                                    <p><strong>Rain Timing:</strong> {{ prediction.rain_timing }}</p>
+                                    <p><strong>Rain Type:</strong> {{ prediction.rain_type }}</p>
+                                    {% if prediction.rain_type != 'No Rain' %}
+                                    <p><strong>Estimated Rain Amount:</strong> {{ prediction.rain_amount }}mm</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h2 class="text-center mb-4">5-Day Rain Forecast - Ajmer</h2>
+            <table class="table table-bordered">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Date</th>
+                        <th>Max Temp (°C)</th>
+                        <th>Min Temp (°C)</th>
+                        <th>Humidity (%)</th>
+                        <th>Rain Probability (%)</th>
+                        <th>Rain Timing</th>
+                        <th>Rain Type</th>
+                        <th>Rain Amount (mm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for forecast in forecasts %}
+                    <tr>
+                        <td>{{ forecast.date }}</td>
+                        <td>{{ forecast.max_temp }}</td>
+                        <td>{{ forecast.min_temp }}</td>
+                        <td>{{ forecast.humidity }}</td>
+                        <td>
+                            <span class="badge {% if forecast.rain_probability > 70 %}bg-danger{% elif forecast.rain_probability > 40 %}bg-warning{% else %}bg-success{% endif %}">
+                                {{ forecast.rain_probability }}%
+                            </span>
+                        </td>
+                        <td>{{ forecast.rain_timing }}</td>
+                        <td>{{ forecast.rain_type }}</td>
+                        <td>{% if forecast.rain_type != 'No Rain' %}{{ forecast.rain_amount }}{% else %}-{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Back to Input</a>
+        </div>
+    </div>
+</body>
+</html>
