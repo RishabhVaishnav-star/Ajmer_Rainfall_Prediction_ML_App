@@ -11,5 +11,5 @@ This Flask web app uses a trained machine learning model to predict rainfall cha
 - `model.pkl` — Trained ML models
 - `templates/index.html` — UI
 - `templates/forecast.html` - UI
-- 
+- `templates/prediction.html` - UI
 - `requirements.txt` — Python dependencies
