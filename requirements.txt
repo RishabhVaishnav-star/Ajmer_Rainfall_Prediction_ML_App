@@ -5,6 +5,7 @@ gunicorn==21.2.0 # Gunicorn is a WSGI HTTP Server for UNIX, needed for productio
 # Add your ML model dependencies here, e.g.:
 scikit-learn
 pandas
+xgboost
 
 
 
