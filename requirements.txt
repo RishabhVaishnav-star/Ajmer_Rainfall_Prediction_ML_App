@@ -1,7 +1,9 @@
 Flask==2.3.3
 requests
+numpy
 gunicorn==21.2.0 # Gunicorn is a WSGI HTTP Server for UNIX, needed for production
 # Add your ML model dependencies here, e.g.:
 # scikit-learn==1.3.0
 # pandas==2.1.1
+
 
