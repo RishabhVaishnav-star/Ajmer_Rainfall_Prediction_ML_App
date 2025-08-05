@@ -3,8 +3,9 @@ requests
 numpy
 gunicorn==21.2.0 # Gunicorn is a WSGI HTTP Server for UNIX, needed for production
 # Add your ML model dependencies here, e.g.:
-# scikit-learn
-# pandas==2.1.1
+scikit-learn
+pandas==2.1.1
+
 
 
 
